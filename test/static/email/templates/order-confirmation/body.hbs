@@ -1,0 +1,17 @@
+{{> header title="We have received your order #{{order.code}}!" }}
+
+<mj-section>
+    <mj-column>
+        <mj-text>
+            Dear {{ order.customer.firstName }} {{ order.customer.lastName }},
+        </mj-text>
+        <mj-text>
+            Thank you for your order <strong>#{{ order.code }}</strong>. 
+            <br/>
+        </mj-text>
+
+       </mj-column>
+</mj-section>
+
+
+{{> footer }}

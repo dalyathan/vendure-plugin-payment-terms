@@ -1,0 +1,20 @@
+{{> header title="Password reset for Colour Graphics" }}
+
+<mj-section>
+    <mj-column>
+        <mj-text>
+            Someone requested a new password for your account.
+        </mj-text>
+        <mj-button background-color="#e72170"
+                   color="white"
+                   href="{{ passwordResetUrl }}?token={{ passwordResetToken }}">
+            Reset Password
+        </mj-button>
+        <mj-text>
+                    If you didn't make this request then you can safely ignore this email - nothing has been changed on your account.
+        </mj-text>
+    </mj-column>
+</mj-section>
+
+
+{{> footer }}

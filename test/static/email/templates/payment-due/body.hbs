@@ -1,0 +1,17 @@
+{{> header title="Your payment is due. #{{order.code}}!" }}
+
+<mj-section>
+    <mj-column>
+        <mj-text>
+            Dear {{ customer.firstName }} {{ customer.lastName }},
+        </mj-text>
+        <mj-text>
+            Payment is due for order(s). Your current limit is {{customer.customFields.paymentLimit}}
+            <br/>
+        </mj-text>
+
+       </mj-column>
+</mj-section>
+
+
+{{> footer }}
