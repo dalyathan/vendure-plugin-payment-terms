@@ -12,9 +12,9 @@ import { compileUiExtensions } from '@vendure/ui-devkit/compiler';
 import { initialData } from './initial-data';
 import * as path from 'path';
 import { AdminUiPlugin } from '@vendure/admin-ui-plugin';
-import {VendurePluginPaymentTerms} from '../src/plugin'
+import {VendurePluginPaymentTerms} from '../dist/index'
 import { defaultEmailHandlers, EmailPlugin } from '@vendure/email-plugin';
-import {paymentDueEventHandler} from '../src/api/email-event-handlers'
+import {paymentDueEventHandler} from '../dist/index'
 
 (async () => {
   let server: TestServer;
