@@ -8,3 +8,8 @@ This plugin allows certain customers to pay using Payment Terms. Payment Terms a
 ![Customer Details Page](customer_details_page.png)
 ![Payment Due Email](payment_due_email.png)
 
+## Shipping Address new fields
+
+![Shipping Address Custom Fields](address-custom-fields.png)
+
+

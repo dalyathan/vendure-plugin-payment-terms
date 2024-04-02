@@ -46,6 +46,20 @@ const CRON_JOB_PREFIX=`VendurePluginPaymentTerms`
                 }
             ]
         })
+        config.customFields.Address.push({
+            name: 'vat',
+            label: [
+                {languageCode: LanguageCode.en, value: 'VAT Number'}
+            ],
+            type: 'string'
+        },
+        {
+            name: 'purchaseOrder',
+            label: [
+                {languageCode: LanguageCode.en, value: 'Purchase Order (PO) Number'}
+            ],
+            type: 'string'
+        })
         return config;
     }
 })
