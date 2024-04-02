@@ -1,6 +1,6 @@
 {
   "name": "vendure-plugin-payment-terms",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "repository": "git@github.com:dalyathan/vendure-plugin-payment-terms.git",
   "author": "Surafel Melese Tariku",
   "license": "MIT",
