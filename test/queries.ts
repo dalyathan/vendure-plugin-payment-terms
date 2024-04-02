@@ -169,6 +169,7 @@ export const GET_ELIGIBLE_SHIPPING_METHODS=gql`
         id
         isEligible
         name
+        customerPaymentLimit
       }
     }
 `

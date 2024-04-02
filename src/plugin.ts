@@ -9,10 +9,13 @@ import './api/types'
 import  dayjs from 'dayjs';
 import { PaymentTermsDueEvent } from './api/payment-terms-event';
 import { loggerCtx } from './constants';
+import { PaymentMethodQuoteFieldResolver } from './api/payment-method-quote-field.resolver';
+import { shopApiExtensions } from './api/schema';
 const CRON_JOB_PREFIX=`VendurePluginPaymentTerms`
 
 @VendurePlugin({
     imports: [PluginCommonModule, ScheduleModule.forRoot()],
+    shopApiExtensions: {resolvers: [PaymentMethodQuoteFieldResolver], schema: shopApiExtensions},
     configuration:(config)=>{
         if(config.paymentOptions.paymentMethodEligibilityCheckers?.length){
             config.paymentOptions.paymentMethodEligibilityCheckers.push(paymentTermsEligibilityChecker)

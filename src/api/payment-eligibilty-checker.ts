@@ -10,7 +10,6 @@ export const paymentTermsEligibilityChecker = new PaymentMethodEligibilityChecke
         customerGroupId: {
             type: 'int',
             ui: { component: 'customer-group-form-input' },
-            required: true,
             label: [{ languageCode: LanguageCode.en, value: 'Customer group' }],
         },
     },

@@ -92,7 +92,9 @@ import {Order} from '@vendure/common/lib/generated-shop-types';
     }
     await proceedToArrangingPayment(shopClient,'T_1',createAddressInput,createAddressInput)
     const {eligiblePaymentMethods}= await shopClient.query(GET_ELIGIBLE_SHIPPING_METHODS)
-    expect(eligiblePaymentMethods.find((paymentMethod)=> paymentMethod.name  === paymentMethodWithTermsCode && paymentMethod.isEligible)).toBeDefined()
+    const paymentMethodQuote=eligiblePaymentMethods.find((paymentMethod)=> paymentMethod.name  === paymentMethodWithTermsCode && paymentMethod.isEligible) 
+    expect(paymentMethodQuote).toBeDefined()
+    expect(paymentMethodQuote.customerPaymentLimit).toBe(paymentTermsCustomFields.paymentLimit)
   })
 
   it('Should not allow payment with terms for trevor_donnelly96@hotmail.com', async()=>{
