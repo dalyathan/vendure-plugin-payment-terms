@@ -13,10 +13,10 @@ export class PaymentMethodQuoteFieldResolver {
         if(!order){
             throw new UserInputError('No active order found')
         }
-        await this.entityHydrator.hydrate(ctx, order, {relations: ['customer','payments']})
-        const paymentMethodWithTerms= (await this.paymentMethodService.findAll(ctx, {filter: {code: {eq: paymentMethodQuote.code}}, take: 1})).items
-        if(paymentMethodWithTerms.length && paymentMethodWithTerms[0].checker?.code === paymentTermsEligibilityChecker.code){
-            return order?.customer?.customFields?.paymentLimit
+        await this.entityHydrator.hydrate(ctx, order, {relations: ['customer']})
+        const paymentMethodWithTerms= await this.paymentMethodService.findOne(ctx, paymentMethodQuote.id);
+        if(paymentMethodWithTerms?.checker?.code === paymentTermsEligibilityChecker.code){
+            return order.customer?.customFields?.paymentLimit
         }
     }
 }
