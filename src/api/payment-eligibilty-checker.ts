@@ -8,14 +8,14 @@ export const paymentTermsEligibilityChecker = new PaymentMethodEligibilityChecke
     },
     args: {
         customerGroupId: {
-            type: 'int',
+            type: 'ID',
             ui: { component: 'customer-group-form-input' },
             label: [{ languageCode: LanguageCode.en, value: 'Customer group' }],
         },
     },
     check: async(ctx, order, args) => {
         await entityHydrator.hydrate(ctx, order,{relations: ['customer.groups']})
-        const isEligible= !!order.customer?.groups.find((customerGroup)=> customerGroup.id === args.customerGroupId)??false;
+        const isEligible= !!order.customer?.groups.find((customerGroup)=> `${customerGroup.id}` === args.customerGroupId)??false;
         return isEligible;
     },
 });
