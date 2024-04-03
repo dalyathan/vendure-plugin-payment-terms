@@ -15,7 +15,7 @@ export const paymentTermsEligibilityChecker = new PaymentMethodEligibilityChecke
     },
     check: async(ctx, order, args) => {
         await entityHydrator.hydrate(ctx, order,{relations: ['customer.groups']})
-        const isEligible= !!order.customer?.groups.find((customerGroup)=> `${customerGroup.id}` === args.customerGroupId)??false;
+        const isEligible= !!order.customer?.groups.find((customerGroup)=> `${customerGroup.id}` === JSON.parse(args.customerGroupId as string))??false;
         return isEligible;
     },
 });

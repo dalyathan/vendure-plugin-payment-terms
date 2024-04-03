@@ -1,6 +1,7 @@
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { Allow, Ctx, RequestContext, Transaction, Permission, PaymentMethod, PaymentMethodService } from '@vendure/core'
 import {MutationUpdatePaymentMethodArgs, MutationCreatePaymentMethodArgs, ConfigurableOperationInput} from '@vendure/common/lib/generated-types';
+import { paymentTermsEligibilityChecker } from './payment-eligibilty-checker';
 
 @Resolver('PaymentMethod')
 export class OverridePaymentMethodResolver {
@@ -29,6 +30,9 @@ export class OverridePaymentMethodResolver {
     }
 
     private stringifyCheckerCustomerGroupIds(checker:  ConfigurableOperationInput | undefined){
+       if(checker?.code !== paymentTermsEligibilityChecker.code){
+        return
+       }
         for(let dynamicComponent of checker?.arguments??[]){
             if(dynamicComponent.name === 'customerGroupId'){
                 dynamicComponent.value= JSON.stringify(dynamicComponent.value)
