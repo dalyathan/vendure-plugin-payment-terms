@@ -11,11 +11,13 @@ import { PaymentTermsDueEvent } from './api/payment-terms-event';
 import { loggerCtx } from './constants';
 import { PaymentMethodQuoteFieldResolver } from './api/payment-method-quote-field.resolver';
 import { shopApiExtensions } from './api/schema';
+import { OverridePaymentMethodResolver } from './api/payment-method-checker-config-arg-fix.resolver';
 const CRON_JOB_PREFIX=`VendurePluginPaymentTerms`
 
 @VendurePlugin({
     imports: [PluginCommonModule, ScheduleModule.forRoot()],
     shopApiExtensions: {resolvers: [PaymentMethodQuoteFieldResolver], schema: shopApiExtensions},
+    adminApiExtensions: {resolvers: [OverridePaymentMethodResolver]},
     configuration:(config)=>{
         if(config.paymentOptions.paymentMethodEligibilityCheckers?.length){
             config.paymentOptions.paymentMethodEligibilityCheckers.push(paymentTermsEligibilityChecker)
