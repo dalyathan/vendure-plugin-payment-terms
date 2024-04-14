@@ -1,17 +1,82 @@
-{{> header title="Your payment is due. #{{order.code}}!" }}
-
-<mj-section>
-    <mj-column>
-        <mj-text>
-            Dear {{ customer.firstName }} {{ customer.lastName }},
+<mjml>
+  <mj-head>
+    <mj-title>Elite Enterprise Software | Affordable Computer Software</mj-title>
+    <mj-font name="Open Sans" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"></mj-font>
+    <mj-attributes>
+      <mj-all font-family="Open sans, Helvetica, Arial, sans-serif"></mj-all>
+      <mj-text font-weight="400" font-size="16px" color="#000000" line-height="24px"></mj-text>
+      <mj-section padding="0px"></mj-section>
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#F2F2F2">
+    <mj-section padding="10px 0 20px 0">
+      <mj-column>
+        <mj-text align="center" color="#9B9B9B" font-size="11px">Elite Enterprise Software | Affordable Computer Software</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="20px 20px 0 20px" background-color="#FFFFFF">
+      <mj-column width="35%">
+        <mj-image src="https://eliteenterprisesoftware.com/elite_logo.webp" alt="Elite Enterprise Software Logo" align="center" border="none" width="80px" padding-left="0px" padding-right="0px" padding-bottom="0px" padding-top="0"></mj-image>
+      </mj-column>
+      <mj-column width="65%">
+        <mj-text align="right" font-size="11px"><a href="https://eliteenterprisesoftware.com/" style="color: #000000; text-decoration: none;">HOME</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="https://eliteenterprisesoftware.com/products" style="color: #000000; text-decoration: none;">STORE</a>&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;<a href="https://eliteenterprisesoftware.com/contact-us" style="color: #000000; text-decoration: none;">CONTACT US</a></mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="20px 20px 0 20px" background-color="#FFFFFF">
+      <mj-column>
+        <mj-text align="center" font-weight="300" padding="30px 40px 10px 40px" font-size="32px" line-height="40px" color="#0978f0">Your invoice is due</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="10px 20px" background-color="#FFFFFF">
+      <mj-column>
+        <mj-divider width="30px" border-width="3px" border-color="#0978f0"></mj-divider>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#FFFFFF">
+      <mj-column>
+        <mj-text align="center" font-size="14px" color="#000" font-family="Open Sans, Arial, sans-serif">
+          <strong>Order Code</strong>
         </mj-text>
-        <mj-text>
-            Payment is due for order(s). Your current limit is {{customer.customFields.paymentLimit}}
-            <br/>
+        <mj-text align="center" font-size="14px" color="#000" font-family="Open Sans, Arial, sans-serif">
+          {{ order.code }}
         </mj-text>
+      </mj-column>
+      <mj-column>
+        <mj-text align="center" font-size="14px" color="#000" font-family="Open Sans, Arial, sans-serif">
+          <strong>Order Date</strong>
+        </mj-text>
+        <mj-text align="center" font-size="14px" color="#000" font-family="Open Sans, Arial, sans-serif">
+          {{ formatDate order.orderPlacedAt }}
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0 20px 20px 20px" background-color="#FFFFFF">
+      <mj-column width="80%">
+        <mj-button background-color='#ffae00' color='#FFF' font-size='14px' align='center' font-weight='bold' border='none' padding='15px 30px' href='https://elite.charity/invoices/tyv45qsbdo41ev7nbb/{{order.code}}?email={{order.customer.emailAddress}}' font-family='Helvetica' padding-left='25px' padding-right='25px' padding-bottom='10px'>Download Invoice</mj-button>
 
-       </mj-column>
-</mj-section>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#617a84">
+      <mj-column width="100%">
+        <mj-image src="data:image/png;base64,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" alt="" align="center" border="none" padding="0px"></mj-image>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#1181FB">
+      <mj-column width="100%">
+        <mj-text color="#ffffff" font-size="10px">
+          Â© {{currentYear}}
+          Elite Enterprise Software. All rights reserved.
+        </mj-text>
+        <mj-text color="#ffffff" font-size="10px">
+          Company Number: 13982233
+        </mj-text>
+        <mj-text color="#ffffff" font-size="10px">
+          VAT: GB406928973
+        </mj-text>
+      </mj-column>
+    </mj-section>
 
-
-{{> footer }}
+  </mj-body>
+</mjml>
+message.txt
+9 KB

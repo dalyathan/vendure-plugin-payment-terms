@@ -7,5 +7,5 @@ export const paymentDueEventHandler = new EmailEventListener('payment-due')
   .setRecipient((event: PaymentTermsDueEvent) => event.customer.emailAddress)
   .setFrom("{{ fromAddress }}")
   .setSubject(`Payment is due for order(s)`)
-  .setTemplateVars((event: PaymentTermsDueEvent) => ({ customer: event.customer, }))
+  .setTemplateVars((event: PaymentTermsDueEvent) => ({ customer: event.customer, order: event.order }))
   .setMockEvent(mockPaymentDueEvent);

@@ -1,4 +1,4 @@
-import { Customer, RequestContext, VendureEvent } from '@vendure/core';
+import { Customer, Order, RequestContext, VendureEvent } from '@vendure/core';
 
 /**
  * @description
@@ -8,6 +8,7 @@ export class PaymentTermsDueEvent extends VendureEvent {
     constructor(
         public ctx: RequestContext,
         public customer: Customer,
+        public order: Order 
     ) {
         super();
     }
